@@ -1,0 +1,7 @@
+<mvc:View controllerName="unloadingplan.controller.App"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Shell id="shell" appWidthLimited="false">
+        <App id="app" busy="{appView>/busy}" busyIndicatorDelay="{appView>/delay}"/>
+    </Shell>
+</mvc:View>

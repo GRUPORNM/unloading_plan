@@ -1,0 +1,240 @@
+<mvc:View controllerName="unloadingplan.controller.Create"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:m="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.uxap"
+    xmlns:dnd="sap.ui.core.dnd"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form">
+
+    <m:Page floatingFooter="true">
+        <ObjectPageLayout headerContentPinned="true" showTitleInHeaderContent="true" upperCaseAnchorBar="false">
+            <headerTitle>
+                <ObjectPageDynamicHeaderTitle>
+                    <expandedHeading>
+                        <m:Title text="{i18n>newDraft}" wrapping="true"/>
+                    </expandedHeading>
+
+                    <snappedHeading>
+                        <m:FlexBox fitContainer="true" alignItems="Center">
+                            <m:Title text="{i18n>newDraft}" wrapping="true" />
+                        </m:FlexBox>
+                    </snappedHeading>
+
+                    <expandedContent>
+                        <m:Text text="{createModel>/currentDate}"/>
+                    </expandedContent>
+
+                    <snappedContent>
+                        <m:Text text="{createModel>/currentDate}"/>
+                    </snappedContent>
+
+                    <snappedTitleOnMobile>
+                        <m:Title text="{createModel>/currentDate}"/>
+                    </snappedTitleOnMobile>
+                    <actions>
+                        <m:Button visible="{createModel>/v1}" text="{i18n>save}" type="Emphasized" press="attachHeaderChange(false)"/>
+                        <m:Button visible="{createModel>/v2}" text="{i18n>edit}" type="Emphasized" press="attachHeaderChange(true)"/>
+                    </actions>
+                </ObjectPageDynamicHeaderTitle>
+            </headerTitle>
+
+            <headerContent>
+                <m:FlexBox wrap="Wrap" fitContainer="true">
+                    <layout:VerticalLayout >
+                        <m:Label text="{i18n>purchase_order_no}"/>
+                        <m:Title text="{createModel>/ebeln}"/>
+                    </layout:VerticalLayout>
+                </m:FlexBox>
+            </headerContent>
+
+            <sections>
+                <ObjectPageSection titleUppercase="false" showTitle="true" title="{i18n>generalData}">
+                    <ObjectPageSubSection>
+                        <form:SimpleForm id="GeneralDataContainer" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                            <form:content>
+                                <!--GENERAL DATA-->
+                                <core:Title text="{i18n>generalData}" />
+
+                                <m:Label text="{i18n>purchase_order_no}"/>
+                                <m:Select id="EBELN" name="EBELN" required="true" forceSelection="false" items="{ path: '/xTQAxUNLOADING_PLAN_PO_VH' }" change="handleBookingChanged">
+                                    <core:Item key="{purchase_order}" text="{purchase_order}" />
+                                </m:Select>
+
+                                <m:Label text="{i18n>ship_name}"/>
+                                <m:Input id="SHIP_NAME" name="SHIP_NAME" required="true"/>
+
+                                <m:Label text="{i18n>trip_no}"/>
+                                <m:Input id="TRIP_NO" name="TRIP_NO" required="true"/>
+
+                                <m:Label text="{i18n>imo_no}"/>
+                                <m:Input id="IMO_NO" name="IMO_NO" required="true"/>
+
+                                <m:Label text="{i18n>eta}"/>
+                                <m:DatePicker id="ETA" name="ETA" minDate="{createView>/minDate}" required="true" value="{type: 'sap.ui.model.odata.type.DateTime', formatOptions: {pattern: 'dd.MM.yyyy'}}" valueFormat="yyyy-MM-ddTHH:mm:ss" displayFormat="dd.MM.yyyy"/>
+
+                                <m:Label text="{i18n>etb}"/>
+                                <m:DatePicker id="ETB" name="ETB" minDate="{createView>/minDate}" required="true" value="{type: 'sap.ui.model.odata.type.DateTime', formatOptions: {pattern: 'dd.MM.yyyy'}}" valueFormat="yyyy-MM-ddTHH:mm:ss" displayFormat="dd.MM.yyyy"/>
+
+                                <m:Label text="{i18n>start_op}"/>
+                                <m:DatePicker id="START_OP" name="START_OP" minDate="{createView>/minDate}" required="true" value="{type: 'sap.ui.model.odata.type.DateTime', formatOptions: {pattern: 'dd.MM.yyyy'}}" valueFormat="yyyy-MM-ddTHH:mm:ss" displayFormat="dd.MM.yyyy"/>
+
+                                <m:Label text="{i18n>end_op}"/>
+                                <m:DatePicker id="END_OP" name="END_OP" required="true" minDate="{createView>/minDate}" value="{type: 'sap.ui.model.odata.type.DateTime', formatOptions: {pattern: 'dd.MM.yyyy'}}" valueFormat="yyyy-MM-ddTHH:mm:ss" displayFormat="dd.MM.yyyy"/>
+
+                                <m:Label text="{i18n>operation_type}"/>
+                                <m:Input id="OPERATION_TYPE" name="OPERATION_TYPE" required="true"/>
+
+                                <m:Label text="{i18n>etd}"/>
+                                <m:DatePicker id="ETD" name="ETD" required="true" minDate="{createView>/minDate}" value="{type: 'sap.ui.model.odata.type.DateTime', formatOptions: {pattern: 'dd.MM.yyyy'}}" valueFormat="yyyy-MM-ddTHH:mm:ss" displayFormat="dd.MM.yyyy"/>
+
+                                <m:Label text="{i18n>ref_date}"/>
+                                <m:DatePicker id="REF_DATE" name="REF_DATE" required="true" minDate="{createView>/minDate}" value="{type: 'sap.ui.model.odata.type.DateTime', formatOptions: {pattern: 'dd.MM.yyyy'}}" valueFormat="yyyy-MM-ddTHH:mm:ss" displayFormat="dd.MM.yyyy"/>
+
+                                <core:Title />
+                                <m:Label text="{i18n>origin_port}"/>
+                                <m:Input id="ORIGIN_PORT" name="ORIGIN_PORT" required="true"/>
+
+                                <m:Label text="{i18n>scale_port}"/>
+                                <m:Input id="SCALE_PORT" name="SCALE_PORT" required="true"/>
+
+                                <m:Label text="{i18n>dest_port}"/>
+                                <m:Input id="DEST_PORT" name="DEST_PORT" required="true"/>
+
+                                <m:Label text="{i18n>customer}"/>
+                                <m:Input id="CUSTOMER" name="CUSTOMER" required="true"/>
+
+                                <m:Label text="{i18n>operation_code}"/>
+                                <m:Input id="OPERATION_CODE" name="OPERATION_CODE" required="true"/>
+
+                                <m:Label text="{i18n>call_sign}"/>
+                                <m:Input id="CALL_SIGN" name="CALL_SIGN" required="true"/>
+
+                                <m:Label text="{i18n>ship_operator}"/>
+                                <m:Input id="SHIP_OPERATOR" name="SHIP_OPERATOR" required="true"/>
+
+                                <m:Label text="{i18n>dock_code}"/>
+                                 <m:Select id="DOCK_CODE" name="DOCK_CODE" required="true" forceSelection="false">
+                                    <core:Item key="PC24" text="{i18n>pc24}" />
+                                    <core:Item key="PC25" text="{i18n>pc25}" />
+                                </m:Select>
+
+                                <m:Label text="{i18n>flag}"/>
+                                <m:Input id="FLAG" name="FLAG" required="true"/>
+                            </form:content>
+                        </form:SimpleForm>
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+
+                <ObjectPageSection titleUppercase="false" title="{i18n>contactsData}">
+                    <ObjectPageSubSection>
+                        <form:SimpleForm id="ContactsDataContainer" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false">
+                            <form:content>
+                                <core:Title text="{i18n>agencyData}" />
+                                <m:Label text="{i18n>agency_name}"/>
+                                <m:Input id="C_AGENCY_NAME" name="C_AGENCY_NAME" required="true"/>
+
+                                <m:Label text="{i18n>agent_name}"/>
+                                <m:Input id="C_AGENT_NAME" name="C_AGENT_NAME" required="true"/>
+
+                                <m:Label text="{i18n>agent_phone}"/>
+                                <m:MaskInput id="C_AGENT_PHONE" name="C_AGENT_PHONE" required="true" mask="999 999 999" placeholderSymbol="_" showClearIcon="true" />
+
+                                <core:Title text="{i18n>inspectionData}" />
+                                <m:Label text="{i18n>inspection_name}"/>
+                                <m:Input id="C_INSPECTION_NAME" name="C_INSPECTION_NAME" required="true"/>
+
+                                <m:Label text="{i18n>inspector_name}"/>
+                                <m:Input id="C_INSPECTOR_NAME" name="C_INSPECTOR_NAME" required="true"/>
+
+                                <m:Label text="{i18n>inspector_phone}"/>
+                                <m:MaskInput id="C_INSPECTOR_PHONE" name="C_INSPECTOR_PHONE" required="true" mask="999 999 999" placeholderSymbol="_" showClearIcon="true" />
+
+                                <core:Title text="{i18n>loadMasterData}" />
+                                <m:Label text="{i18n>load_master_name}"/>
+                                <m:Input id="C_LOAD_MASTER_NAME" name="C_LOAD_MASTER_NAME" required="true"/>
+
+                                <m:Label text="{i18n>load_master_phone}"/>
+                                <m:MaskInput id="C_LOAD_MASTER_PHONE" name="C_LOAD_MASTER_PHONE" required="true" mask="999 999 999" placeholderSymbol="_" showClearIcon="true" />
+
+                                <core:Title text="{i18n>terminalOperatorData}" />
+                                <m:Label text="{i18n>terminal_op_name}"/>
+                                <m:Input id="C_TERMINAL_OP_NAME" name="C_TERMINAL_OP_NAME" required="true"/>
+
+                                <m:Label text="{i18n>terminal_op_phone}"/>
+                                <m:MaskInput id="C_TERMINAL_OP_PHONE" name="C_TERMINAL_OP_PHONE" required="true" mask="999 999 999" placeholderSymbol="_" showClearIcon="true" />
+                            </form:content>
+                        </form:SimpleForm>
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+
+                <ObjectPageSection title="{i18n>unload_plan}" titleUppercase="false">
+                    <ObjectPageSubSection>
+                        <m:HBox>
+                            <!--UNLOAD ITEMS-->
+                            <m:Table id="UnloadItemsTable" growing="true" items="{createModel>/ArrivalProducts}">
+                                <m:headerToolbar>
+                                    <m:OverflowToolbar>
+                                        <m:ToolbarSpacer/>
+                                        <m:Button text="{i18n>resetChanges}" visible="{createModel>/v2}" press="handleResetData" type="Transparent" />
+                                    </m:OverflowToolbar>
+                                </m:headerToolbar>
+                                <m:columns>
+                                    <m:Column demandPopin="true" width="130px" minScreenWidth="Tablet">
+                                        <m:Text text="{i18n>sequence}"/>
+                                    </m:Column>
+                                    <m:Column demandPopin="true" minScreenWidth="Tablet">
+                                        <m:Text text="{i18n>material}"/>
+                                    </m:Column>
+                                    <m:Column demandPopin="true" minScreenWidth="Tablet">
+                                        <m:Text text="{i18n>destination}"/>
+                                    </m:Column>
+                                    <m:Column demandPopin="true" minScreenWidth="Tablet">
+                                        <m:Text text="{i18n>quantity}"/>
+                                    </m:Column>
+                                    <m:Column demandPopin="true" minScreenWidth="Tablet">
+                                        <m:Text text="{i18n>flow_rate}"/>
+                                    </m:Column>
+                                    <m:Column demandPopin="true" minScreenWidth="Tablet">
+                                        <m:Text text="{i18n>expected_duration}"/>
+                                    </m:Column>
+                                    <m:Column demandPopin="true" minScreenWidth="Tablet" width="5rem"/>
+                                    <m:Column demandPopin="true" minScreenWidth="Tablet" width="5rem"/>
+                                </m:columns>
+                                <m:items>
+                                    <m:ColumnListItem vAlign="Middle">
+                                        <m:cells>
+                                            <!-- SEQUENCE -->
+                                            <m:MaskInput enabled="{createModel>/v2}" value="{ path: 'createModel>SEQUENCE' }" mask="99999 " placeholder="{i18n>enterSequence}" showClearIcon="true" liveChange="handleSequenceChange"/>
+                                            <!-- DESC_PRODUCT && PRODUCT -->
+                                            <m:ObjectIdentifier title="{createModel>DESC_PRODUCT}" text="{createModel>PRODUCT}"/>
+                                            <!-- DESC_TANK && TANK_RECEP_EXP -->
+                                            <m:Input enabled="{createModel>/v2}" value="{ path: 'createModel>TANK_RECEP_EXP'}"/>
+                                            <!-- VIRTUAL_QUANTITY -->
+                                            <m:Input enabled="{createModel>/v2}" value="{ path: 'createModel>VIRTUAL_QUANTITY' }" type="Number" description="{createModel>UNIT}" width="auto"/>
+                                            <!-- PUMP_FLOW_RATE -->
+                                            <m:Input enabled="{createModel>/v2}" value="{ path: 'createModel>PUMP_FLOW_RATE' }" type="Number" description="M3/h" width="auto"/>
+                                            <!-- EXPECTED_DURATION -->
+                                            <m:TimePicker enabled="{createModel>/v2}" value="{createModel>EXPECTED_DURATION}" valueFormat="PTHH'H'mm'M'ss'S'" displayFormat="HH:mm"/>
+
+                                            <!-- DUPLICATE BUTTON -->
+                                            <m:Button visible="{createModel>/v2}" icon="sap-icon://copy" type="Transparent" press="handleDuplicateItem"/>
+                                            <!-- DELETE BUTTON -->
+                                            <m:Button visible="{createModel>/v2}" icon="sap-icon://delete" press="handleDeleteItem" type="Transparent"/>
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                </m:items>
+                            </m:Table>
+                        </m:HBox>
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+            </sections>
+        </ObjectPageLayout>
+        <m:footer>
+            <m:OverflowToolbar>
+                <m:ToolbarSpacer/>
+                <m:Button text="{i18n>create}" type="Emphasized" press="teste" />
+            </m:OverflowToolbar>
+        </m:footer>
+    </m:Page>
+</mvc:View>

@@ -1,0 +1,17 @@
+<mvc:View controllerName="unloadingplan.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:core="sap.ui.core"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    <f:DynamicPage id="page" headerPinned="true">
+        <f:header>
+            <f:DynamicPageHeader id="dynamicHeader">
+                <Input id="variantInput" type="Text" value="{Main>/variantInput}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="onShowVariantList" class="variantMode" valueHelpIconSrc="sap-icon://dropdown" width="6.5%"  />
+                <smartFilterBar:SmartFilterBar id="smartFilterBarGroups" initialise="onFBarInitialise" entitySet="xTQAxUNLOADING_PLANS_HEADER" filterChange="onFilterChange" />
+            </f:DynamicPageHeader>
+        </f:header>
+    </f:DynamicPage>
+</mvc:View>

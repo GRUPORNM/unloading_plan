@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: unloadingplan
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://10.0.50.105:50000/
+          client: '300'
+        app:
+          name: /TQA/UNLD_PLANS
+          description: ''
+          package: /TQA/LVP
+          transport: DD2K901750
+        exclude:
+          - /test/

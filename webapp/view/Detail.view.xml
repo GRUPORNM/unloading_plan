@@ -1,0 +1,242 @@
+<mvc:View controllerName="unloadingplan.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:m="sap.m"
+    xmlns="sap.uxap"
+    xmlns:layout="sap.ui.layout"
+    xmlns:smartForm="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:u="sap.ui.unified">
+
+    <ObjectPageLayout headerContentPinned="true" showTitleInHeaderContent="true" upperCaseAnchorBar="false">
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle>
+                <expandedHeading>
+                    <m:Title text="{ebeln}" wrapping="true"/>
+                </expandedHeading>
+                <snappedHeading>
+                    <m:FlexBox fitContainer="true" alignItems="Center">
+                        <m:Title text="{ebeln}" wrapping="true" />
+                    </m:FlexBox>
+                </snappedHeading>
+                <expandedContent>
+                    <m:Text text="{ship_name}"/>
+                </expandedContent>
+                <snappedContent>
+                    <m:Text text="{ship_name}"/>
+                </snappedContent>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+
+        <headerContent>
+            <m:FlexBox wrap="Wrap" fitContainer="true">
+                <layout:VerticalLayout >
+                    <m:Label text="{i18n>origin_port}"/>
+                    <m:Title text="{origin_port}"/>
+                </layout:VerticalLayout>
+
+                <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                    <m:Label text="{i18n>dest_port}"/>
+                    <m:Title text="{dest_port}"/>
+                </layout:VerticalLayout>
+            </m:FlexBox>
+        </headerContent>
+
+        <sections>
+            <ObjectPageSection titleUppercase="false" title="{i18n>generalData}" showTitle="false">
+                <ObjectPageSubSection>
+                    <smartForm:SmartForm id="generalForm" editTogglable="true" editable="false" editToggled="handleEditToggled">
+                        <smartForm:layout>
+                            <smartForm:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"/>
+                        </smartForm:layout>
+                        <smartForm:Group label="{i18n>generalData}">
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{ebeln}" mandatory="true" name="EBELN"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{ship_name}" mandatory="true" name="SHIP_NAME"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{trip_no}" mandatory="true" name="TRIP_NO"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{imo_no}" mandatory="true" name="IMO_NO"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{eta}" mandatory="true" name="ETA">
+                                    <smartField:configuration>
+                                        <smartField:Configuration controlType="datepicker" displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-ddTHH:mm:ss"/>
+                                    </smartField:configuration>
+                                </smartField:SmartField>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{etb}" mandatory="true" name="ETB">
+                                    <smartField:configuration>
+                                        <smartField:Configuration controlType="datepicker" displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-ddTHH:mm:ss"/>
+                                    </smartField:configuration>
+                                </smartField:SmartField>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{start_op}" mandatory="true" name="START_OP">
+                                    <smartField:configuration>
+                                        <smartField:Configuration controlType="datepicker" displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-ddTHH:mm:ss"/>
+                                    </smartField:configuration>
+                                </smartField:SmartField>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{end_op}" mandatory="true" name="END_OP">
+                                    <smartField:configuration>
+                                        <smartField:Configuration controlType="datepicker" displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-ddTHH:mm:ss"/>
+                                    </smartField:configuration>
+                                </smartField:SmartField>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{operation_type}" mandatory="true" name="OPERATION_TYPE"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{etd}" mandatory="true" name="ETD">
+                                    <smartField:configuration>
+                                        <smartField:Configuration controlType="datepicker" displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-ddTHH:mm:ss"/>
+                                    </smartField:configuration>
+                                </smartField:SmartField>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{ref_date}" mandatory="true" name="REF_DATE">
+                                    <smartField:configuration>
+                                        <smartField:Configuration controlType="datepicker" displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-ddTHH:mm:ss"/>
+                                    </smartField:configuration>
+                                </smartField:SmartField>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{origin_port}" mandatory="true" name="ORIGIN_PORT"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{scale_port}" mandatory="true" name="SCALE_PORT"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{dest_port}" mandatory="true" name="DEST_PORT"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{customer}" mandatory="true" name="CUSTOMER"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{operation_code}" mandatory="true" name="OPERATION_CODE"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{call_sign}" mandatory="true" name="CALL_SIGN"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{ship_operator}" mandatory="true" name="SHIP_OPERATOR"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{dock_code}" mandatory="true" name="DOCK_CODE"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{flag}" mandatory="true" name="FLAG"/>
+                            </smartForm:GroupElement>
+                        </smartForm:Group>
+                    </smartForm:SmartForm>
+                </ObjectPageSubSection>
+            </ObjectPageSection>
+
+            <ObjectPageSection titleUppercase="false" title="{i18n>contactsData}" showTitle="false">
+                <ObjectPageSubSection>
+                    <smartForm:SmartForm id="contactsForm" editable="false">
+                        <smartForm:layout>
+                            <smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="2"/>
+                        </smartForm:layout>
+                        <smartForm:Group label="{i18n>contactsData}">
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{agency_name}" mandatory="true" name="C_AGENCY_NAME"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{agent_name}" mandatory="true" name="C_AGENT_NAME"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{agent_phone}" mandatory="true" name="C_AGENT_PHONE"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{inspection_name}" mandatory="true" name="C_INSPECTION_NAME"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{inspector_phone}" mandatory="true" name="C_INSPECTOR_PHONE"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{load_master_name}" mandatory="true" name="C_LOAD_MASTER_NAME"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{load_master_phone}" mandatory="true" name="C_LOAD_MASTER_PHONE"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{terminal_op_name}" mandatory="true" name="C_TERMINAL_OP_NAME"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{terminal_op_phone}" mandatory="true" name="C_TERMINAL_OP_PHONE"/>
+                            </smartForm:GroupElement>
+                        </smartForm:Group>
+                    </smartForm:SmartForm>
+                </ObjectPageSubSection>
+            </ObjectPageSection>
+
+            <ObjectPageSection showTitle="false" id="personalSection" title="{i18n>segmentsSection}" titleUppercase="false">
+                <subSections>
+                    <ObjectPageSubSection title="{i18n>unload_plan}" titleUppercase="false">
+                        <m:Table id="UnloadItemsTable" growing="true" items="{createModel>/ArrivalProducts}">
+                            <m:headerToolbar>
+                                <m:OverflowToolbar>
+                                    <m:ToolbarSpacer/>
+                                    <m:Button text="{i18n>resetChanges}" visible="{createModel>/v2}" press="handleResetData" type="Transparent" />
+                                </m:OverflowToolbar>
+                            </m:headerToolbar>
+                            <m:columns>
+                                <m:Column demandPopin="true" width="130px" minScreenWidth="Tablet">
+                                    <m:Text text="{i18n>sequence}"/>
+                                </m:Column>
+                                <m:Column demandPopin="true" minScreenWidth="Tablet">
+                                    <m:Text text="{i18n>material}"/>
+                                </m:Column>
+                                <m:Column demandPopin="true" minScreenWidth="Tablet">
+                                    <m:Text text="{i18n>destination}"/>
+                                </m:Column>
+                                <m:Column demandPopin="true" minScreenWidth="Tablet">
+                                    <m:Text text="{i18n>quantity}"/>
+                                </m:Column>
+                                <m:Column demandPopin="true" minScreenWidth="Tablet">
+                                    <m:Text text="{i18n>flow_rate}"/>
+                                </m:Column>
+                                <m:Column demandPopin="true" minScreenWidth="Tablet">
+                                    <m:Text text="{i18n>expected_duration}"/>
+                                </m:Column>
+                                <m:Column demandPopin="true" minScreenWidth="Tablet" width="5rem"/>
+                                <m:Column demandPopin="true" minScreenWidth="Tablet" width="5rem"/>
+                            </m:columns>
+                            <m:items>
+                                <m:ColumnListItem vAlign="Middle">
+                                    <m:cells>
+                                        <!-- SEQUENCE -->
+                                        <m:MaskInput enabled="{createModel>/v2}" value="{ path: 'createModel>SEQUENCE' }" mask="99999 " placeholder="{i18n>enterSequence}" showClearIcon="true" liveChange="handleSequenceChange"/>
+                                        <!-- DESC_PRODUCT && PRODUCT -->
+                                        <m:ObjectIdentifier title="{createModel>DESC_PRODUCT}" text="{createModel>PRODUCT}"/>
+                                        <!-- DESC_TANK && TANK_RECEP_EXP -->
+                                        <m:Input enabled="{createModel>/v2}" value="{ path: 'createModel>TANK_RECEP_EXP'}"/>
+                                        <!-- VIRTUAL_QUANTITY -->
+                                        <m:Input enabled="{createModel>/v2}" value="{ path: 'createModel>VIRTUAL_QUANTITY' }" type="Number" description="{createModel>UNIT}" width="auto"/>
+                                        <!-- PUMP_FLOW_RATE -->
+                                        <m:Input enabled="{createModel>/v2}" value="{ path: 'createModel>PUMP_FLOW_RATE' }" type="Number" description="M3/h" width="auto"/>
+                                        <!-- EXPECTED_DURATION -->
+                                        <m:TimePicker enabled="{createModel>/v2}" value="{createModel>EXPECTED_DURATION}" valueFormat="PTHH'H'mm'M'ss'S'" displayFormat="HH:mm"/>
+
+                                        <!-- DUPLICATE BUTTON -->
+                                        <m:Button visible="{createModel>/v2}" icon="sap-icon://copy" type="Transparent" press="handleDuplicateItem"/>
+                                        <!-- DELETE BUTTON -->
+                                        <m:Button visible="{createModel>/v2}" icon="sap-icon://delete" press="handleDeleteItem" type="Transparent"/>
+                                    </m:cells>
+                                </m:ColumnListItem>
+                            </m:items>
+                        </m:Table>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
+</mvc:View>

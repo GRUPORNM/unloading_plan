@@ -1,0 +1,172 @@
+{
+  "_version": "1.53.0",
+  "sap.app": {
+    "id": "unloadingplan",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.11.5",
+      "toolsId": "81f41185-307e-4197-b82b-489581549603"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/tqa/UNLOADING_PLANS_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "TQA_OD_UNLOADING_PLANS_ANNO_MDL",
+            "annotation"
+          ],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "TQA_OD_UNLOADING_PLANS_ANNO_MDL": {
+        "uri": "/zsrv_iwfnd/Annotations(TechnicalName='%2FTQA%2FOD_UNLOADING_PLANS_ANNO_MDL',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService//TQA/OD_UNLOADING_PLANS_ANNO_MDL.xml"
+        }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.114.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "unloadingplan.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "/sap/bc/ui5_ui5/tqa/launchpad/css/apps-style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "unloadingplan.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "main",
+          "pattern": "",
+          "target": [
+            "main"
+          ]
+        },
+        {
+          "name": "detail",
+          "pattern": "xTQAxUNLOADING_PLANS_HEADER/{objectId}",
+          "target": [
+            "detail"
+          ]
+        },
+        {
+          "name": "create",
+          "pattern": "create",
+          "target": [
+            "create"
+          ]
+        },
+        {
+          "name": "NotFound",
+          "pattern": "NotFound",
+          "target": "NotFound"
+        }
+      ],
+      "targets": {
+        "main": {
+          "viewId": "main",
+          "viewLevel": 1,
+          "viewName": "Main"
+        },
+        "detail": {
+          "viewId": "detail",
+          "viewLevel": 2,
+          "viewName": "Detail"
+        },
+        "create": {
+          "viewId": "create",
+          "viewLevel": 2,
+          "viewName": "Create"
+        },
+        "NotFound": {
+          "viewName": "NotFound",
+          "viewType": "XML",
+          "transition": "show",
+          "clearControlAggregation": false,
+          "viewId": "NotFound"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "unloadingplan.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="TQA.UNLOADING_PLANS_SRV" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="xTQAxUNLOADING_PLANS_HEADERType" sap:label="Data Definition for Unloading Plans Header" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ebeln"/>
+                </Key>
+                <Property Name="ebeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchase Order No." sap:quickinfo="Nº do documento de compras"/>
+                <Property Name="ship_name" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Ship Name" sap:quickinfo="Caractere 40 posições"/>
+                <Property Name="trip_no" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Trip No." sap:quickinfo="Campo de caracteres do comprimento 10"/>
+                <Property Name="imo_no" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="IMO No." sap:quickinfo="Campo de caracteres do comprimento 10"/>
+                <Property Name="eta" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="ETA" sap:quickinfo="Campo do tipo DATS"/>
+                <Property Name="etb" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="ETB" sap:quickinfo="Campo do tipo DATS"/>
+                <Property Name="start_op" Type="Edm.Time" Precision="0" sap:label="Operation Start Date/Time" sap:quickinfo="Campo da ctg.TIMS"/>
+                <Property Name="end_op" Type="Edm.Time" Precision="0" sap:label="Operation End Date/Time" sap:quickinfo="Campo da ctg.TIMS"/>
+                <Property Name="operation_type" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Operation Type" sap:quickinfo="Campo de caracteres do comprimento 10"/>
+                <Property Name="etd" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="ETD" sap:quickinfo="Campo do tipo DATS"/>
+                <Property Name="ref_date" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Ref. Date" sap:quickinfo="Campo do tipo DATS"/>
+                <Property Name="origin_port" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Origin Port" sap:quickinfo="Char 20"/>
+                <Property Name="scale_port" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Scale Port" sap:quickinfo="Char 20"/>
+                <Property Name="dest_port" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Destination Port" sap:quickinfo="Char 20"/>
+                <Property Name="customer" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Caractere 40 posições"/>
+                <Property Name="operation_code" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Operation Code" sap:quickinfo="Caractere 15"/>
+                <Property Name="call_sign" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Call Sign" sap:quickinfo="Campo de caracteres do comprimento 10"/>
+                <Property Name="ship_operator" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Ship Operator" sap:quickinfo="Caractere 40 posições"/>
+                <Property Name="dock_code" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Dock Code" sap:quickinfo="Campo de caracteres do comprimento 10"/>
+                <Property Name="flag" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Flag" sap:quickinfo="Char 20"/>
+                <Property Name="agency_name" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Agency" sap:quickinfo="Caractere 40 posições"/>
+                <Property Name="agent_name" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Agent" sap:quickinfo="Caractere 40 posições"/>
+                <Property Name="agent_phone" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Agent Phone" sap:quickinfo="Char 20"/>
+                <Property Name="inspection_name" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Inspection" sap:quickinfo="Caractere 40 posições"/>
+                <Property Name="inspector_name" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Inspector" sap:quickinfo="Caractere 40 posições"/>
+                <Property Name="inspector_phone" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Inspector Phone" sap:quickinfo="Char 20"/>
+                <Property Name="load_master_name" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Load Master" sap:quickinfo="Caractere 40 posições"/>
+                <Property Name="load_master_phone" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Load Master Phone" sap:quickinfo="Char 20"/>
+                <Property Name="terminal_op_name" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Terminal Operator" sap:quickinfo="Caractere 40 posições"/>
+                <Property Name="terminal_op_phone" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Terminal Operator Phone" sap:quickinfo="Char 20"/>
+                <NavigationProperty Name="to_planItems" Relationship="TQA.UNLOADING_PLANS_SRV.assoc_4FE7B62ABE51E2E8C78FEA7482432561" FromRole="FromRole_assoc_4FE7B62ABE51E2E8C78FEA7482432561" ToRole="ToRole_assoc_4FE7B62ABE51E2E8C78FEA7482432561"/>
+            </EntityType>
+            <EntityType Name="xTQAxUNLOADING_PLAN_ITEMSType" sap:label="Data Definition for Unloading Plan Items" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ebeln"/>
+                    <PropertyRef Name="ebelp"/>
+                </Key>
+                <Property Name="ebeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchase Order No." sap:quickinfo="Nº do documento de compras"/>
+                <Property Name="ebelp" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Nº item do documento de compra"/>
+                <Property Name="product" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Product" sap:quickinfo="Commercial Product Code"/>
+                <Property Name="density_vac" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Density Vac." sap:quickinfo="Data element for decimal 5,2"/>
+                <Property Name="tank_recep_exp" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Tank" sap:quickinfo="Depósito"/>
+                <Property Name="qty_m3" Type="Edm.Decimal" Precision="10" Scale="3" sap:label="Qty [m3]" sap:quickinfo="Data element for decimal 10,3"/>
+                <Property Name="qty_ton" Type="Edm.Decimal" Precision="10" Scale="3" sap:label="Qty [ton]" sap:quickinfo="Data element for decimal 10,3"/>
+                <Property Name="bl_qty_m3" Type="Edm.Decimal" Precision="10" Scale="3" sap:label="B/L Qty [m3]" sap:quickinfo="Data element for decimal 10,3"/>
+                <Property Name="bl_qty_ton" Type="Edm.Decimal" Precision="10" Scale="3" sap:label="B/L Qty [ton ar]" sap:quickinfo="Data element for decimal 10,3"/>
+                <Property Name="max_flow_land" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Max land flow [m3/h]:" sap:quickinfo="Data element for decimal 5,2"/>
+                <Property Name="max_flow_ship" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Max ship flow [m3/h]:" sap:quickinfo="Data element for decimal 5,2"/>
+                <Property Name="pump_flow_rate" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Forecast Flow Pump" sap:quickinfo="Data element for decimal 5,2"/>
+                <Property Name="max_press_land" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Max Land pressure" sap:quickinfo="Data element for decimal 5,2"/>
+                <Property Name="max_press_ship" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Max Ship pressure" sap:quickinfo="Data element for decimal 5,2"/>
+                <Property Name="conn" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Connection" sap:quickinfo="Campo de caracteres do comprimento 10"/>
+            </EntityType>
+            <Association Name="assoc_4FE7B62ABE51E2E8C78FEA7482432561" sap:content-version="1">
+                <End Type="TQA.UNLOADING_PLANS_SRV.xTQAxUNLOADING_PLANS_HEADERType" Multiplicity="1" Role="FromRole_assoc_4FE7B62ABE51E2E8C78FEA7482432561"/>
+                <End Type="TQA.UNLOADING_PLANS_SRV.xTQAxUNLOADING_PLAN_ITEMSType" Multiplicity="*" Role="ToRole_assoc_4FE7B62ABE51E2E8C78FEA7482432561"/>
+            </Association>
+            <EntityContainer Name="TQA_UNLOADING_PLANS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="xTQAxUNLOADING_PLANS_HEADER" EntityType="TQA.UNLOADING_PLANS_SRV.xTQAxUNLOADING_PLANS_HEADERType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xTQAxUNLOADING_PLAN_ITEMS" EntityType="TQA.UNLOADING_PLANS_SRV.xTQAxUNLOADING_PLAN_ITEMSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_4FE7B62ABE51E2E8C78FEA7482432561" Association="TQA.UNLOADING_PLANS_SRV.assoc_4FE7B62ABE51E2E8C78FEA7482432561" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xTQAxUNLOADING_PLANS_HEADER" Role="FromRole_assoc_4FE7B62ABE51E2E8C78FEA7482432561"/>
+                    <End EntitySet="xTQAxUNLOADING_PLAN_ITEMS" Role="ToRole_assoc_4FE7B62ABE51E2E8C78FEA7482432561"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="TQA.UNLOADING_PLANS_SRV.TQA_UNLOADING_PLANS_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="TQA.UNLOADING_PLANS_SRV.TQA_UNLOADING_PLANS_SRV_Entities/xTQAxUNLOADING_PLANS_HEADER" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_planItems"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://10.0.50.105:50000/sap/opu/odata/tqa/UNLOADING_PLANS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://10.0.50.105:50000/sap/opu/odata/tqa/UNLOADING_PLANS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
